@@ -1,0 +1,38 @@
+﻿@model BTRS.Models.Passengers;
+
+@using (Html.BeginForm("Login", "Passenger", FormMethod.Post))
+{
+
+    <table>
+        <tr>
+            <td>
+                @Html.Label("Username:")
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.username)
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                @Html.Label("Password:")
+            </td>
+            <td>
+                @Html.PasswordFor(model => model.password)
+            </td>
+
+        </tr>
+
+    </table>
+    @Html.TextBox("Login", "Login", new { @Type = "submit" })
+    
+
+}
+@TempData["Msg"]
+<br />
+
+
+<a asp-action="Signup" asp-controller="Passenger">Do not have an account...</a>
+
+

@@ -1,0 +1,68 @@
+﻿@model BTRS.Models.Passengers;
+
+@using (Html.BeginForm("Signup","Passenger",FormMethod.Post))
+{
+
+    <table>
+
+        <tr>
+            <td>
+                @Html.Label("Name:")
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.name)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Email:")
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.email)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Gender:")
+            </td>
+            <td>
+                @Html.RadioButtonFor(model => model.gender, "M") @Html.Label("Male")
+                <br />
+                @Html.RadioButtonFor(model => model.gender, "F") @Html.Label("Female")
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <td>
+                @Html.Label("Username:")
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.username)
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                @Html.Label("Password:")
+            </td>
+            <td>
+                @Html.PasswordFor(model => model.password)
+            </td>
+
+        </tr>
+
+    </table>
+    <br />
+
+    @Html.TextBox("Signup","Signup",new{@Type="submit"})
+
+}
+<a asp-action="Login" asp-controller="Passenger">Already Have an account..</a>
+@TempData["Msg"]
+
+
