@@ -111,7 +111,7 @@ namespace BTRS.Controllers
                 {
                     HttpContext.Session.SetInt32("userID", passenger.ID);
 
-                    return RedirectToAction("BusTripsList");
+                    return RedirectToAction("BusTripList");
                 }
                 else if (admin != null)
                 {
@@ -133,10 +133,64 @@ namespace BTRS.Controllers
             }
             return View();
         }
+       
         [HttpGet]
-        public IActionResult BusTripsList()
+        public IActionResult BusTripList()
         {
-            return View(_context.bus_trips.ToList());
+
+            int userID = (int)HttpContext.Session.GetInt32("userID");
+            List<int> lst_user = _context.passenger_BusTrips.Where(
+              t => t.passenger.ID == userID).Select(s => s.bus_trip.ID).ToList();
+
+            List<BusTrip> lst_bus = _context.bus_trips.Where(
+                t => lst_user.Contains(t.ID)
+                ).ToList();
+            List<BusTrip> bus1 = _context.bus_trips.ToList();
+            List<BusTrip> bus2 = bus1.Except(lst_bus).ToList();
+
+            return View(bus2);
+        }
+        
+        public IActionResult AddBooking(int ID)
+        {
+            int UserID = (int)HttpContext.Session.GetInt32("userID");
+
+            PassengerBusTrip passengertrip = new PassengerBusTrip();
+            passengertrip.passenger = _context.passengers.Find(UserID);
+            passengertrip.bus_trip = _context.bus_trips.Find(ID);
+
+            _context.passenger_BusTrips.Add(passengertrip);
+            _context.SaveChanges();
+            return RedirectToAction("Booked");
+        }
+   
+        public IActionResult Booked()
+        {
+
+            int userID = (int)HttpContext.Session.GetInt32("userID");
+
+
+            List<int> lst_user = _context.passenger_BusTrips.Where(
+                t => t.passenger.ID == userID).Select(s => s.bus_trip.ID).ToList();
+
+            List<BusTrip> lst_bus = _context.bus_trips.Where(
+                t => lst_user.Contains(t.ID)
+                ).ToList();
+
+
+            return View(lst_bus);
+        }
+        [HttpGet]
+        public IActionResult cancel(int id)
+        {
+            int userID = (int)HttpContext.Session.GetInt32("userID");
+
+            PassengerBusTrip cancelled = _context.passenger_BusTrips.Where(u => u.passenger.ID == userID).FirstOrDefault(r => r.bus_trip.ID == id);
+
+            _context.passenger_BusTrips.Remove(cancelled);
+            _context.SaveChanges();
+
+            return RedirectToAction("Booked");
         }
     }
 

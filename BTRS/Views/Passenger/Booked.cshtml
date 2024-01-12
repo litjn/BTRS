@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BTRS.Models.BusTrip>
+
+@{
+    ViewData["Title"] = "Booked";
+}
+
+<h1>Booked</h1>
+<a asp-action="BusTripList" asp-controller="Passenger">Back to bus list</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.trip_destination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bus_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.trip_destination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bus_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+
+                <a asp-action="cancel" asp-route-id="@item.ID">cancel</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
