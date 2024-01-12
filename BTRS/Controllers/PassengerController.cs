@@ -28,10 +28,10 @@ namespace BTRS.Controllers
         {
             
             bool duplicate = checkData(passenger.username, passenger.email);
+            bool Empty = checkEmpty(passenger);
 
 
-
-            if (ModelState.IsValid)
+            if (Empty)
             {
                 if (duplicate)
                 {
@@ -63,16 +63,25 @@ namespace BTRS.Controllers
         {
             Passengers PEmail = _context.passengers.Where(t => t.email.Equals(email)).FirstOrDefault();
             Passengers passenger = _context.passengers.Where(u => u.username.Equals(username)).FirstOrDefault();
-            if (passenger != null && PEmail != null)
-            {
-                return true;
-            }
-            else
+            if (passenger != null || PEmail != null)
             {
                 return false;
             }
+            else
+            {
+                return true;
+            }
         }
-      
+        public bool checkEmpty(Passengers passenger)
+        {
+            if (String.IsNullOrEmpty(passenger.username)) return false;
+            else if (String.IsNullOrEmpty(passenger.password)) return false;
+            else if (String.IsNullOrEmpty(passenger.name)) return false;
+            else if (String.IsNullOrEmpty(passenger.email)) return false;
+
+            else return true;
+        }
+
 
 
 

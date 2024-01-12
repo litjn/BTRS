@@ -1,0 +1,88 @@
+﻿body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+    border: 3px solid #f1f1f1;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 30%;
+    border-radius: 40%;
+}
+
+.container {
+    padding: 16px;
+}
+
+label {
+    font-weight: bold;
+}
+
+#username,
+#password, #name, #email {
+    width: 547%; /* Adjust the value based on your padding */
+     background-color: #f1f1f1;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: 3px solid black;
+    
+}
+
+.button-link.cancelbtn {
+    padding: 14px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 8px 0;
+    color: white;
+    background-color: #f44336; /* Background color for normal state */
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+    opacity:0.9;
+}
+
+
+.signupbtn {
+    padding: 14px 20px;
+    background-color: #04AA6D;
+    margin: 8px 0;
+    opacity: 0.9;
+}
+/* Float cancel and signup buttons and add an equal width */
+
+.cancelbtn, .signupbtn {
+    float: left;
+    width: 50%;
+    
+
+
+    color: white; /* Text color for both Cancel and Signup buttons */
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.error-message {
+    color: red;
+    font-size: 16px;
+}
+
+
+
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+        width: 100%;
+    }
+
+
+
+
+   

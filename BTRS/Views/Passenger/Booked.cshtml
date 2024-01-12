@@ -1,24 +1,27 @@
 ﻿@model IEnumerable<BTRS.Models.BusTrip>
-
+<head>
+    <link rel="stylesheet" href="~/css/Booked.css" />
+</head>
 @{
     ViewData["Title"] = "Booked";
 }
 
-<h1>Booked</h1>
-<a asp-action="BusTripList" asp-controller="Passenger">Back to bus list</a>
 
-<table class="table">
+<h1>Booked</h1>
+<a asp-action="BusTripList" asp-controller="Passenger">Back to trips list</a>
+
+<table class="Table">
     <thead>
-        <tr>
-            <th>
+        <tr class="header">
+            <th style="width:30%;">
                 @Html.DisplayNameFor(model => model.trip_destination)
             </th>
-            <th>
+            <th style="width:30%;">
                 @Html.DisplayNameFor(model => model.bus_number)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.date)
-            </th>
+            </th style="width:30%;">
             <th></th>
         </tr>
     </thead>

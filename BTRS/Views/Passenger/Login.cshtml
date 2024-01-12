@@ -1,38 +1,46 @@
 ﻿@model BTRS.Models.Passengers;
 
+<head>
+    <link rel="stylesheet" href="~/css/Login.css" />
+</head>
+
+<div class="imgcontainer">
+    <img src="~/images/bus.jpg" alt="AVATAR" class="avatar" />
+</div>
+
+
 @using (Html.BeginForm("Login", "Passenger", FormMethod.Post))
 {
-
     <table>
         <tr>
             <td>
                 @Html.Label("Username:")
             </td>
-            <td>
-                @Html.TextBoxFor(model => model.username)
-            </td>
 
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(model => model.username, new { @class="custom-width-row", @id = "username" })
+            </td>
         </tr>
 
         <tr>
             <td>
                 @Html.Label("Password:")
             </td>
-            <td>
-                @Html.PasswordFor(model => model.password)
-            </td>
 
         </tr>
-
+        <tr>
+            <td>
+                @Html.PasswordFor(model => model.password, new { @class = "custom-width-row", @id = "password" })
+            </td>
+        </tr>
     </table>
-    @Html.TextBox("Login", "Login", new { @Type = "submit" })
-    
 
+    @Html.TextBox("Login", "Login", new { @Type = "submit", @id = "submit", @class = "submit-btn" })
 }
+
 @TempData["Msg"]
 <br />
 
-
-<a asp-action="Signup" asp-controller="Passenger">Do not have an account...</a>
-
-
+<a class="link" asp-action="Signup" asp-controller="Passenger">Do not have an account...</a>

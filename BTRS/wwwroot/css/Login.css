@@ -1,0 +1,87 @@
+﻿body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+    border: 3px solid #f1f1f1;
+}
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 50%;
+    border-radius: 0%;
+}
+
+.container {
+    padding: 16px;
+}
+#username,
+#password {
+    width: 547%; /* Adjust the value based on your padding */
+    background-color: #04AA6D;
+    color: white;
+    padding:14px 20px ;
+    display:inline-block;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.custom-width-row {
+    width: 100%; /* Adjust the width as needed, it can be in pixels, percentage, etc. */
+}
+
+
+
+
+
+#submit {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+    .submit-btn:hover {
+        opacity: 0.8;
+    }
+/* unvisited link */
+a:link {
+    color: red;
+}
+
+/* visited link */
+a:visited {
+    color: green;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+/* Bold labels */
+label {
+    font-weight: bold;
+}
+
+
